@@ -1,11 +1,11 @@
 ---
-- name: Ping windows host
-  hosts: windows
-  become: false
-  gather_facts: false
-  tasks:
-    - name: test connection
-      ansible.windows.win_ping:
+#- name: Ping windows host
+#  hosts: windows
+#  become: false
+#  gather_facts: false
+#  tasks:
+#    - name: test connection
+#      ansible.windows.win_ping:
 - name: Ping linux host
   hosts: linux
   become: false
