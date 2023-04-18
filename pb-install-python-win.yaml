@@ -1,0 +1,20 @@
+- hosts: windows
+  gather_facts: false
+  tasks:
+    - name: Install Chocolatey package manager
+      win_chocolatey:
+        name: chocolatey
+        state: present
+    
+    - name: Install Python
+      win_chocolatey:
+        name: python3
+        state: present
+    
+#    - name: Install pip for Python
+#      win_chocolatey:
+#        name: pip
+#        state: present
+
+    - name: Install Docker module for Python
+      win_shell: pip install docker

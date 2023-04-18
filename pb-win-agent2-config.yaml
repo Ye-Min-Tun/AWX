@@ -1,0 +1,15 @@
+---
+- name: Configure Zabbix Agent 2
+  hosts: windows
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Configure Zabbix Agent with custom conf
+      ansible.windows.win_template:
+         src: /etc/ansible/templates/zabbix-agent2-win-template.conf.j2
+         dest: C:\Zabbix\conf\zabbix_agent2.conf
+         backup: yes
+    - name: Restart Zabbix Agent
+      win_service:
+         name: Zabbix Agent 2
+         state: restarted

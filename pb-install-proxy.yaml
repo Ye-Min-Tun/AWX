@@ -1,0 +1,26 @@
+- hosts: proxy
+  become: true
+  tasks:
+    - name: Install proxy
+      include_role:
+        name: community.zabbix.zabbix_proxy
+      vars:
+        zabbix_proxy_hostname: Zabbix proxy
+        zabbix_proxy_server: 10.88.4.204
+        zabbix_proxy_database: pgsql
+        zabbix_proxy_database_long: postgresql
+        zabbix_proxy_dbport: 5432
+        zabbix_proxy_dbhost: 10.88.4.207
+        zabbix_proxy_dbhost_run_install: false
+        zabbix_proxy_dbname: zabbix_proxy
+        zabbix_proxy_dbuser: zbxuser
+        zabbix_proxy_dbpassword: wfQ7DcH0
+        zabbix_proxy_privileged_host: '%'
+        zabbix_proxy_pgsql_login_host: 10.88.4.207
+        zabbix_proxy_pgsql_login_user: zbxuser
+        zabbix_proxy_pgsql_login_password: wfQ7DcH0
+        zabbix_proxy_pgsql_login_port: 5432
+        zabbix_database_creation: false
+        zabbix_proxy_install_database_client: false
+      tags:
+        - install_proxy

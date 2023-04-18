@@ -1,0 +1,15 @@
+---
+- name: Configure Zabbix Agent 2
+  hosts: linux
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Configure Zabbix Agent with custom conf
+      template:
+         src: /etc/ansible/templates/zabbix-agent2-linux-template.conf.j2
+         dest: /etc/zabbix/zabbix_agent2.conf
+         backup: yes
+    - name: Restart Zabbix Agent
+      service:
+         name: zabbix-agent2
+         state: restarted

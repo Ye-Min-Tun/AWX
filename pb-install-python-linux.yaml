@@ -1,0 +1,19 @@
+---
+- name: Install Python 3 and Docker module for Python
+  hosts: linux
+  become: true
+  tasks:
+    - name: Install Python 3 and pip on Linux
+      package:
+        name:
+          - python3
+          - python3-pip
+        state: present
+      when: "'Windows' not in ansible_os_family"
+
+    - name: Install Docker module for Python
+      pip:
+        name: docker
+        state: present
+
+
